@@ -388,7 +388,8 @@ func (this *Html2Image) SetBottom(username, url string) {
     if siteUrl == "" {
     	siteUrl = "http://leanote.com"
     }
-    this.InsertA(siteUrl + "/blog/" + username, false)
+    sitePort, _ := revel.Config.Int("http.port")
+    this.InsertA(siteUrl + ":" + strconv.Itoa(sitePort) + "/blog/" + username, false)
     
 	this.setLogo()
 //    this.painWidth = this.width - 100
