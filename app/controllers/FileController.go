@@ -38,7 +38,7 @@ func (c File) UploadBlogLogo() revel.Result {
 // 拖拉上传, pasteImage
 func (c File) UploadImageJson(renderHtml, from string) revel.Result {
 	re := c.uploadImage(from, "");
-	re.Id = siteUrl + re.Id
+	re.Id = siteUrl +":"+strconv.Itoa(sitePort)+ re.Id
 //	re.Id = re.Id
 	return c.RenderJson(re)
 }
@@ -46,7 +46,7 @@ func (c File) UploadImageJson(renderHtml, from string) revel.Result {
 // leaui image plugin
 func (c File) UploadImageLeaui(albumId string) revel.Result {
 	re := c.uploadImage("", albumId);
-	re.Id = siteUrl + re.Id
+	re.Id = siteUrl +":"+strconv.Itoa(sitePort)+ re.Id
 //	re.Id = re.Id
 	return c.RenderJson(re)
 }

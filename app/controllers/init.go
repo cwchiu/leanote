@@ -30,6 +30,7 @@ var pageSize = 1000
 var defaultSortField = "UpdatedTime"
 var leanoteUserId = "52d26b4e99c37b609a000001"
 var siteUrl = "http://leanote.com"
+var sitePort = 80
 var openRegister = true
 
 // 拦截器
@@ -127,6 +128,7 @@ func init() {
 	revel.OnAppStart(func() {
 		leanoteUserId, _ = revel.Config.String("adminUsername")
 		siteUrl, _ = revel.Config.String("site.url")
+		sitePort, _ = revel.Config.Int("http.port")
 		openRegister, _ = revel.Config.Bool("register.open")
 	})
 }
