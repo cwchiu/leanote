@@ -307,6 +307,7 @@ function switchEditor(isMarkdown) {
 	}
 }
 
+var SCRIPT_REGEX = /<script\b[^<]*(?:(?!<\/script>)<[^<]*)*<\/script>/gi;
 // editor 设置内容
 // 可能是tinymce还没有渲染成功
 var previewToken = "<div style='display: none'>FORTOKEN</div>"
@@ -315,6 +316,9 @@ function setEditorContent(content, isMarkdown, preview) {
 		content = "";
 	}
 	if(!isMarkdown) {
+        while (SCRIPT_REGEX.test(content)) {
+            content = content.replace(SCRIPT_REGEX, "");
+        }
 		$("#editorContent").html(content);
 		var editor = tinymce.activeEditor;
 		if(editor) {

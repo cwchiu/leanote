@@ -219,7 +219,7 @@ function log(o) {
 					<img src="/images/loading-30.gif" />
 					<br />
 					<br />
-					loading...
+					{{msg . "loading"}}...
 				</div>
 				<div id="leftNotebook">
 					<div id="notebook">
@@ -348,11 +348,11 @@ function log(o) {
 									aria-labelledby="dropdownMenu1"
 									style="right: 3px; ! important; left: -100px; min-width: 100px;">
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">创建日期</a></li>
+										href="#">{{msg . "dateCreate"}}</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">修改日期</a></li>
+										href="#">{{msg . "dateModify"}}</a></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
-										href="#">标题</a></li>
+										href="#">{{msg . "title"}}</a></li>
 									<li role="presentation" class="divider"></li>
 									<li role="presentation"><a role="menuitem" tabindex="-1"
 										href="#">Separated </a></li>
@@ -406,15 +406,16 @@ function log(o) {
 					<div id="noteMask"
 						style="position: absolute; top: 0px; bottom: 0px; right: 0; left: 10px; z-index: -1"></div>
 					<div id="editorMask">
-						该笔记本下空空如也...何不
+						{{msg . "emptyNoteTip"}}
 						<br />
 						<div id="editorMaskBtns">
 							<br />
-							<a class="note">新建笔记</a>
-							<a class="markdown">新建Markdown笔记</a>
+							<a class="note">{{msg . "newNote"}}</a>
+							<a class="markdown">{{msg . "newMarkdown"}}</a>
 						</div>
 						<div id="editorMaskBtnsEmpty">
-							Sorry, 这里不能添加笔记的.
+							{{msg . "trashCannot"}}
+                            {{msg . "clickAddTag"}}
 						</div>
 					</div>
 					<div id="noteTop">
@@ -606,8 +607,8 @@ function log(o) {
 						</form>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">取消</button>
-						<button type="button" class="btn btn-success" id="registerEmailBtn">发送</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{msg . "cancel"}}</button>
+						<button type="button" class="btn btn-success" id="registerEmailBtn">{{msg . "send"}}</button>
 					</div>
 			      
 			    </div><!-- /.modal-content -->
@@ -753,7 +754,7 @@ function log(o) {
 				    	</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{msg . "close"}}</button>
 						<button type="button" class="btn btn-success viewEmailBtn disabled">查看邮件</button>
 					</div>
 			    </div>
@@ -782,7 +783,7 @@ function log(o) {
 						  			</tr>
 						  			<tr>
 						  				<td>
-										    <button id="usernameBtn" class="btn btn-success">提交</button>
+										    <button id="usernameBtn" class="btn btn-success">{{msg . "submit"}}</button>
 						  				</td>
 						  			</tr>
 						  		</table>
@@ -855,7 +856,7 @@ function log(o) {
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{msg . "close"}}</button>
 					</div>
 				</div>
 				
@@ -904,7 +905,7 @@ function log(o) {
 									<tr>
 										<td></td>
 										<td>
-											<button id="accountBtn" class="btn btn-success" style="width: 100%">提交</button> 
+											<button id="accountBtn" class="btn btn-success" style="width: 100%">{{msg . "send"}}</button> 
 										</td>
 									</tr>
 								</table>
@@ -913,7 +914,7 @@ function log(o) {
 						</div>
 					</div>
 					<div class="modal-footer">
-						<button type="button" class="btn btn-default" data-dismiss="modal">关闭</button>
+						<button type="button" class="btn btn-default" data-dismiss="modal">{{msg . "close"}}</button>
 					</div>
 				</div>
 			</div>
@@ -945,7 +946,7 @@ LEA.locale = "{{.locale}}";
 <script src="js/bootstrap-min.js"></script>
 <script src="js/app/note-min.js"></script>
 <script src="js/app/tag-min.js"></script>
-<script src="js/app/notebook-min.js"></script>
+<script src="js/app/notebook.js"></script>
 <script src="js/app/share-min.js"></script>
 <script src="js/object_id-min.js"></script>
 <script src="js/ZeroClipboard/ZeroClipboard-min.js"></script>

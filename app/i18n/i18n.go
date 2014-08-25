@@ -10,16 +10,19 @@ import (
 
 // convert revel msg to js msg
 
-var msgBasePath = "/Users/life/Documents/Go/package/src/github.com/leanote/leanote/messages/"
-var targetBasePath = "/Users/life/Documents/Go/package/src/github.com/leanote/leanote/public/js/i18n/"
+//var msgBasePath = "/home/test/leanote/leanote/messages/"
+//var targetBasePath = "/Users/life/Documents/Go/package/src/github.com/leanote/leanote/public/js/i18n/"
 func parse(filename string) {
-	file, err := os.Open(msgBasePath + filename)
+    //msgBasePath := revel.BasePath + "/messages/";    
+	//file, err := os.Open(msgBasePath + filename)
+	file, err := os.Open(filename)
 	reader := bufio.NewReader(file)
 	msg := map[string]string{}
 	if err != nil {
 		fmt.Println(err)
 		return
 	}
+    
 	for true {
 		line, _, err := reader.ReadLine()
 		
@@ -56,17 +59,22 @@ func parse(filename string) {
 	b, _ := json.Marshal(msg)
 	str := string(b)
 	fmt.Println(str);
-	
-	targetName := targetBasePath + filename + ".js"
-	file2, err2 := os.OpenFile(targetName, os.O_RDWR|os.O_CREATE, 0644)
+    
+	// targetBasePath := revel.BasePath + "/public/js/i18n/";
+	// targetName := targetBasePath + filename + ".js"
+	// file2, err2 := os.OpenFile(targetName, os.O_RDWR|os.O_CREATE, 0644)
+	file2, err2 := os.OpenFile(filename + ".js", os.O_RDWR|os.O_CREATE, 0644)
 	if err2 != nil {
-		file2, err2 = os.Create(targetName)
+		file2, err2 = os.Create(filename + ".js")
 	}
 	file2.WriteString("var MSG = " + str + ";")
 }
 
 // 生成js的i18n文件
 func main() {
-	parse("msg.en")
-	parse("msg.zh")
+    if len(os.Args) > 1 {
+        parse(os.Args[1])
+    }
+	//parse("msg.en")
+	//parse("msg.zh")
 }
